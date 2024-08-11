@@ -6,6 +6,7 @@ use App\Models\cr;
 use App\Models\DetailPesanan;
 use App\Models\Menu;
 use App\Models\Pesanan;
+use Illuminate\Container\Attributes\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,11 +15,17 @@ class MainController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $menu = Menu::all();
         $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
-        return view('pages.main')->with(['menu' => $menu, 'pesanan' => $pesanan]);
+        $search = $request->input('search_main');
+        if ($search) {
+            $menu = Menu::whereRaw("nama_menu LIKE? OR harga_menu LIKE? OR stok LIKE?", ["%{$search}%", "%{$search}%", "%{$search}%"])->get();
+        } else {
+            $menu = Menu::all();
+        }
+        return view('pages.main')->with(['menu' => $menu, 'pesanan' => $pesanan, 'search' => $search]);
     }
 
     /**
