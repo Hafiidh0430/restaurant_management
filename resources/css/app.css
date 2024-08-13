@@ -37,6 +37,14 @@
     grid-template-columns: repeat(4, 4fr);
 }
 
+.option_menu {
+    display: none;
+}
+
+.option_menu.active_option {
+    display: block;
+}
+
 @media screen and (min-width: 1920px) {
     :root {
         font-size: 1.1vw;

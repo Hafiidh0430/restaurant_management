@@ -23,9 +23,9 @@
                 <div class="list-menu mt-4 text-gray-800 font-medium gap-1 flex flex-col">
                     <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-purple-500 text-white' : '' }}"
                         href="{{ route('main') }}">Dashboard</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('menu') ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage']) ? 'bg-purple-500 text-white' : '' }}"
                         href="{{ route('menu') }}">Food Menu</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('order') ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is(['order', 'addorder']) ? 'bg-purple-500 text-white' : '' }}"
                         href="{{ route('order') }}">Order Menu</a>
                     <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('transaction') ? 'bg-purple-500 text-white' : '' }}"
                         href="{{route('transaction')}}">Transaction</a>

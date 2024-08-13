@@ -37,18 +37,17 @@ class MenuController extends Controller
                 'harga_menu' => ['required'],
                 'stok' => ['nullable'],
             ]);
-            
+
             // $imageName = null;
-            
+
             // if ($request->hasFile('image')) {
             //     $image = $request->file('image');
             //     $imageName = time() . '.' . $image->getClientOriginalExtension();
             //     $image->storeAs('assets', $imageName, 'public');
             // }
-            
+
             DB::table('data_menu')->insert($data_menu);
             return to_route('menu');
-            
         } catch (\Throwable $th) {
             return back();
         }
@@ -67,24 +66,44 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function editMenuPages()
+    public function editMenuPages($id)
     {
-        return view('pages.updatefood');
+        $menu = Menu::find($id);
+        return view('pages.updatefood')->with(['menu' => $menu]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function editMenu()
+    public function editMenu(Request $request, $id)
     {
         //
+        $request->validate([
+            'image' => ['nullable'],
+            'nama_menu' => ['required'],
+            'harga_menu' => ['required'],
+            'stok' => ['nullable'],
+        ]);
+
+        $update_data = [
+            'image' => $request->image,
+            'nama_menu' => $request->nama_menu,
+            'harga_menu' => $request->harga_menu,
+            'stok' => $request->stok
+        ];
+
+        if (DB::table('data_menu')->where('idmenu', $id)->update($update_data) || DB::table('data_menu')->where('idmenu', $id)->first()) {
+            return to_route('menu');
+        }
     }
 
     /**
      * Remove the specified resource in storage.
      */
-    public function hapusMenu()
+    public function deleteMenu($id)
     {
         //
+        $delete = DB::table('data_menu')->where('idmenu', $id)->delete();
+        if ($delete) return to_route('menu');
     }
 }

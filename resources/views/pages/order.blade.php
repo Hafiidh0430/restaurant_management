@@ -5,14 +5,6 @@
         <h1 class="font-bold text-3xl">Add Order.</h1>
         <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
     </div>
-    <div class="menu-dashboard flex items-center  justify-center gap-4">
-        {{-- <form action="" class="search flex items-center gap-2">
-        <input type="text" name="search_food_menu" placeholder="Nasi Bakar"
-            class="bg-neutral-50 py-3 pl-5 pr-32 border-2 rounded-lg outline-none ">
-        <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
-    </form> --}}
-
-    </div>
 @endsection
 
 @section('dashboard')

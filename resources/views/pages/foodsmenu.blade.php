@@ -8,7 +8,7 @@
 @endsection
 
 @section('dashboard')
-    <div class="section-foods mt-2 h-fit max-h-[70dvh] overflow-y-auto rounded-xl pt-4 pb-6">
+    <div class="section-foods mt-2 h-fit max-h-[70dvh] overflow-y-hidden pt-4 pb-6">
         <div class="menu-transaction flex justify-between items-center">
             <form action="" class="search flex w-[60%] items-center gap-2">
                 <input type="text" name="search_food_menu" placeholder="Nasi Bakar"
@@ -42,22 +42,42 @@
         </div>
         <section class="foods-container pr-4 pb-4 max-h-[70dvh] grid grid-cols-2 lg:grid-cols-3 overflow-y-auto mt-6 gap-6">
             @forelse ($menu as $food)
-                <a href="" class="food-card w-full flex p-[1rem] border-2 rounded-xl flex-col gap-4">
-                    <div class="img-food rounded-xl">
-                        <img src="{{ asset('public/assets/' . $food->image) }}" alt=""
-                            class="img w-full object-cover bg-center rounded-lg h-[12rem]" />
-                    </div>
+                <a href="" class="food-card w-full relative flex p-[1rem] border-2 rounded-xl flex-col gap-4">
+                    <div class="img-food relative flex flex-col items-end mr-1 rounded-xl">
+                        <svg class="w-10 option_svg flex h-10 mb-4 p-2 text-dark bg-slate-100 rounded-md hover:bg-slate-200"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                d="M12 6h.01M12 12h.01M12 18h.01" />
+                        </svg>
 
+                        <img src="https://i.pinimg.com/736x/99/fb/d0/99fbd015546ba88252b699414e4a3334.jpg" alt=""
+                            class="img w-full object-cover bg-center rounded-lg h-[12rem]" />
+                        {{-- <img src="{{ asset('public/assets/' . $food->image) }}" alt=""
+                            class="img w-full object-cover bg-center rounded-lg h-[12rem]" /> --}}
+                        <div
+                            class="option_menu top-12 right-0 mr-[-2.8rem] absolute shadow-xl text-sm p-2 rounded-lg gap-1 bg-slate-100 flex flex-col ">
+                            <form method="GET" action="{{ route('updateFood', ['id' => $food->idmenu]) }}">
+                                <button class="px-3 text-left w-full py-1 hover:bg-slate-200 rounded-md">Edit</button>
+                            </form>
+                            <form method="POST" action="{{ route('deleteFoodStore', ['id' => $food->idmenu]) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit"
+                                    class="px-3 py-1 text-left hover:bg-red-200 text-red-600 rounded-md">Delete</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="details-food ">
                         <div class="food-header flex flex-col gap-2">
                             <div class="food-detail flex items-center justify-between">
                                 <h3 class="food-name text-lg font-bold w-[60%]">{{ $food->nama_menu }}</h3>
                                 <h5
                                     class="food-price font-bold bg-purple-200 text-[.8rem] px-4 py-3  rounded-full text-purple-600">
-                                   Rp. {{ $food->harga_menu }}</h5>
+                                    Rp. {{ $food->harga_menu }}</h5>
                             </div>
                             <div class="other flex items-center justify-between">
-                                <h5 class="food-price rounded-full font-semibold">#{{ $food->idmenu }}</h5>
+                                <h5 class="food-price rounded-full font-semibold">Menu - #{{ $food->idmenu }}</h5>
                                 <h5 class="food-price rounded-full">Stok: {{ $food->stok }}</h5>
 
                             </div>
@@ -65,7 +85,7 @@
                     </div>
                 </a>
             @empty
-            <h1>Empty Food</h1>
+                <h1>Empty Food</h1>
             @endforelse
 
 

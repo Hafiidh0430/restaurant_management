@@ -29,6 +29,7 @@ return new class extends Migration
                 ->on('pesanan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
         });
     }
 
