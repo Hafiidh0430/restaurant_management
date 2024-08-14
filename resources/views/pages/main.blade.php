@@ -44,11 +44,11 @@
                         </div>
 
                         <div class="details-food ">
-                            <div class="food-header flex flex-col gap-1">
+                            <div class="food-header flex flex-col gap-3">
                                 <div class="food-detail flex items-center justify-between">
                                     <h3 class="food-name text-lg font-semibold w-[60%]">{{ $foods->nama_menu }}</h3>
                                     <h5
-                                        class="food-price font-bold bg-lime-200 text-[.8rem] px-4 py-3  rounded-full text-lime-600">
+                                        class="food-price font-bold text-[1rem] rounded-full">
                                         Rp. {{ $foods->harga_menu }}</h5>
                                 </div>
                                 <h5 class="food-price rounded-full">Stok: {{ $foods->stok }}</h5>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </header>
-            <section class="foods-contaier max-h-[70dvh]  pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
+            <section class="foods-contaier max-h-[61dvh]  pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
                 @forelse ($pesanan as $orders)
                     <div class="card-order p-4  border-2 rounded-xl">
                         <div class="order-name pb-2 border-b-2 flex justify-between items-center ">
