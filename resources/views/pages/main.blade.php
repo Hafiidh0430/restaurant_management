@@ -12,7 +12,7 @@
             <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
         </form>
         <a href="{{ route('logs') }}"
-            class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-purple-500 hover:bg-purple-600">Messages
+            class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500 hover:bg-lime-600">Messages
         </a>
     </div>
 @endsection
@@ -35,7 +35,7 @@
                     </button>
                 </form>
             </header>
-            <section class="foods-cotainer pr-4 h-fit max-h-[70dvh] overflow-y-auto mt-4 grid grid-cols-2 rounded-lg gap-2">
+            <section class="foods-cotainer pr-4 h-fit max-h-[61dvh] overflow-y-auto mt-4 grid grid-cols-2 rounded-lg gap-2">
                 @forelse ($menu as $foods)
                     <div class="food-card w-full flex p-[1rem] border-2 rounded-xl flex-col gap-4">
                         <div class="img-food rounded-xl">
@@ -48,7 +48,7 @@
                                 <div class="food-detail flex items-center justify-between">
                                     <h3 class="food-name text-lg font-semibold w-[60%]">{{ $foods->nama_menu }}</h3>
                                     <h5
-                                        class="food-price font-bold bg-purple-200 text-[.8rem] px-4 py-3  rounded-full text-purple-600">
+                                        class="food-price font-bold bg-lime-200 text-[.8rem] px-4 py-3  rounded-full text-lime-600">
                                         Rp. {{ $foods->harga_menu }}</h5>
                                 </div>
                                 <h5 class="food-price rounded-full">Stok: {{ $foods->stok }}</h5>

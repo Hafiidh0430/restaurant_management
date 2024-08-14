@@ -33,7 +33,7 @@
                         class="px-4 py-2 rounded-lg bg-slate-100 outline-none border-none" type="text">
                 </div>
             </div>
-            <button type="submit" class="bg-purple-500 mt-2 hover:bg-purple-600 text-white py-2 rounded-lg">Update
+            <button type="submit" class="bg-lime-500 mt-2 hover:bg-lime-600 text-white py-2 rounded-lg">Update
                 food</button>
         </form>
     </div>

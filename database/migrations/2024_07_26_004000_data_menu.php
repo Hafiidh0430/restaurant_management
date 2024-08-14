@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\limeprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_menu', function (Blueprint $table) {
+        Schema::create('data_menu', function (limeprint $table) {
             $table->id('idmenu')->nullable(false)->autoIncrement();
             $table->string('image')->nullable(true);
             $table->string('nama_menu')->nullable(false);

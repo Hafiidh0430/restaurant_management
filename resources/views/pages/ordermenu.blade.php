@@ -17,7 +17,7 @@
             </form>
             <div class="filter flex items-center gap-4">
                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-lime-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button">
                     <svg class="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="filter-food">
                     <a href="{{ route('orderPage') }}"
-                        class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-purple-500  hover:bg-purple-600">+
+                        class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500  hover:bg-lime-600">+
                         Order
                     </a>
                 </div>
@@ -55,7 +55,7 @@
                             {{ $order->pesanan->tanggal_pesanan }}
                         </p>
                     </div>
-                    <h5 class="price-food px-4 py-2 text-[.8rem] bg-purple-200  text-purple-600 rounded-full font-semibold">Rp.
+                    <h5 class="price-food px-4 py-2 text-[.8rem] bg-lime-200  text-lime-600 rounded-full font-semibold">Rp.
                         {{ $order->subtotal }}</h5>
 
                 </div>

@@ -2,7 +2,7 @@
 
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
-        <h1 class="font-bold text-3xl">Logs.</h1>
+        <h1 class="font-bold text-3xl">Transaction.</h1>
         <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
     </div>
     <div class="menu-dashboard flex items-center  justify-center gap-4">
@@ -44,9 +44,9 @@
 
                 <div class="filter-food flex item-center gap-4">
                     <a href=""
-                        class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-purple-500  hover:bg-purple-600">+ Transaction
+                        class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500  hover:bg-lime-600">+ Transaction
                     </a>
-                    <a href="" class="py-2 inline-flex gap-3 text-purple-600 rounded-lg underline">Download
+                    <a href="" class="py-2 inline-flex gap-3 text-lime-600 rounded-lg underline">Download
                         Report
                     </a>
                 </div>

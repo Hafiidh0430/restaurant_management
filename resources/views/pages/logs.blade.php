@@ -25,7 +25,7 @@
             </form>
             <div class="filter flex items-center gap-4">
                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-lime-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button">
                     <svg class="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="filter-food flex item-center gap-4">
-                    <a href="" class="py-2 inline-flex gap-3 text-purple-600 rounded-lg underline">Download
+                    <a href="" class="py-2 inline-flex gap-3 text-lime-600 rounded-lg underline">Download
                         Report
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                 </thead>
                 <tbody>
                     <tr
-                        class="bg-white border-b dark:bg-purple-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b dark:bg-lime-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         {{-- <td class="w-4 p-4">
                             <div class="flex items-center">
                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -86,7 +86,7 @@
                         </th>
                         <td class="flex items-center px-6 py-4">
                             <a href="#"
-                                class="font-medium text-purple-600 px-4 py-2 rounded-full bg-purple-200 hover:underline">22/07/2024
+                                class="font-medium text-lime-600 px-4 py-2 rounded-full bg-lime-200 hover:underline">22/07/2024
                                 - 09:55
                             </a>
                         </td>
@@ -96,7 +96,7 @@
                         </td>
                     </tr>
                     <tr
-                        class="bg-white border-b dark:bg-purple-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b dark:bg-lime-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         {{-- <td class="w-4 p-4">
                             <div class="flex items-center">
                                 <input id="checkbox-table-search-2" type="checkbox"
@@ -109,7 +109,7 @@
                         </th>
                         <td class="flex items-center px-6 py-4">
                             <a href="#"
-                                class="font-medium text-purple-600 px-4 py-2 rounded-full bg-purple-200 hover:underline">24/11/2024
+                                class="font-medium text-lime-600 px-4 py-2 rounded-full bg-lime-200 hover:underline">24/11/2024
                                 - 10:29
                             </a>
                         </td>
@@ -118,7 +118,7 @@
                         </td>
                     </tr>
                     <tr
-                        class="bg-white border-b dark:bg-purple-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b dark:bg-lime-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         {{-- <td class="w-4 p-4">
                             <div class="flex items-center">
                                 <input id="checkbox-table-search-3" type="checkbox"
@@ -131,7 +131,7 @@
                         </th>
                         <td class="flex items-center px-6 py-4">
                             <a href="#"
-                                class="font-medium text-purple-600 px-4 py-2 rounded-full bg-purple-200 hover:underline">22/07/2024
+                                class="font-medium text-lime-600 px-4 py-2 rounded-full bg-lime-200 hover:underline">22/07/2024
                                 - 09:55
                             </a>
                         </td>

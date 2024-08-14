@@ -14,22 +14,22 @@
 
 </head>
 
-<body class="b">
+<body class="">
     <div class="flex">
-        <aside class="fixed bg-neutral-50 h-screen w-[16.5rem] py-10 px-10 border-r-2">
-            <h3 class="title text-2xl font-bold">Sigmart.</h3>
+        <aside class="fixed z-50 bg-neutral-900 h-screen w-[16.5rem] py-10 px-10 border-r-2">
+            <h3 class="title text-2xl text-white font-bold">Sigmart.</h3>
             <div class="menu flex flex-col  mt-7">
                 <p class="title-main text-sm rounded-full text-neutral-500 font-bold">General.</p>
-                <div class="list-menu mt-4 text-gray-800 font-medium gap-1 flex flex-col">
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-purple-500 text-white' : '' }}"
+                <div class="list-menu mt-4 text-slate-300 font-medium gap-3 flex flex-col">
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('main') }}">Dashboard</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage']) ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage']) ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('menu') }}">Food Menu</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is(['order', 'addorder']) ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is(['order', 'addorder']) ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('order') }}">Order Menu</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('transaction') ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('transaction') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{route('transaction')}}">Transaction</a>
-                    <a class="hover:bg-purple-200  hover:text-purple-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('logs*') ? 'bg-purple-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('logs*') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{route('logs')}}">Logs</a>
                 </div>
 
@@ -39,7 +39,7 @@
                         <p class="title-main text-sm rounded-full text-neutral-500 font-bold">Other.</p>
                     </div>
                     <div class="mt-4 text-gray-800 font-medium w-full flex flex-col">
-                        <a class=" text-red-600 px-4 hover:bg-red-300 hover:text-red-700 bg-red-200 rounded-md py-2 rounded-4"
+                        <a class=" text-red-600 px-4 font-bold hover:text-red-600 rounded-md py-2 rounded-4"
                             href="#">Sign Out</a>
                     </div>
                 </div>

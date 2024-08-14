@@ -39,7 +39,7 @@
                                     class="password  bg-neutral-100 px-4 py-3 border-2 border-neutral-200 rounded-[8px] outline-none">
                             </div>
                             <button type="submit" name="submit"
-                                class="login_submit w-full bg-purple-500 hover:bg-purple-600 font-semibold text-white py-4 rounded-[8px]">Sign
+                                class="login_submit w-full bg-lime-500 hover:bg-lime-600 font-semibold text-white py-4 rounded-[8px]">Sign
                                 In to account</button>
                         </form>
                     </div>
