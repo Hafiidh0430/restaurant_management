@@ -28,13 +28,13 @@
                         <form action='{{ route('login.auth') }}' method="POST" class="input_form flex flex-col gap-6">
                             @csrf
                             <div class="email flex flex-col gap-2">
-                                <label for="username" class="username_label ">Username</label>
+                                <label for="username" class="username ">Username</label>
                                 <input type="text" placeholder="" id="username" name="username"
-                                    class="username px-4 py-2 bg-neutral-100 border-2 border-neutral-200 rounded-[8px] outline-none">
+                                    class="user px-4 py-2 bg-neutral-100 border-2 border-neutral-200 rounded-[8px] outline-none">
                             </div>
                             <div class="password flex flex-col gap-2">
                                 <label for="password" class="password_label">Password</label>
-                                <input type="text" placeholder="" id="password" name="password"
+                                <input type="password" placeholder="" id="password" name="password"
                                     class="password  bg-neutral-100 px-4 py-2 border-2 border-neutral-200 rounded-[8px] outline-none">
                             </div>
                             <button type="submit" name="submit"

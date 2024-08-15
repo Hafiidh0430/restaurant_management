@@ -30,29 +30,47 @@ class OrderMenuControlller extends Controller
     public function pesananBaru(Request $request)
     {
         try {
-            $data_order = $request->validate([
-                // 'image' => ['nullable'],
+            $request->validate([
                 'id_menu' => ['required', 'numeric'],
                 'jumlah' => ['required', 'numeric'],
-                'subtotal' => ['required', 'numeric'] 
             ]);
-            
+
+            // insialisasi untuk get id_pesanan
             $id_pesanan = DB::table('pesanan')->insertGetId([
-                'total_pesanan' => 0
+                'total_pesanan' => 0 // Initialize total_pesanan
             ]);
-            $data_order['id_pesanan'] = $id_pesanan;
 
-            DB::table('detail_pesanan')->insert($data_order);
+            // inisialisasi untuk get harga dan stok
+            $menu = DB::table('data_menu')->where('idmenu', $request->id_menu)->first();
+            $harga_menu = $menu->harga_menu;
+            $stok_menu = $menu->stok;
 
-            $total_pesanan = DB::table('detail_pesanan')->count();
+            // hitung subtotal
+            $subtotal = $harga_menu * $request->jumlah;
+
+            // insert into detail_pesanan
+            DB::table('detail_pesanan')->insert([
+                'id_pesanan' => $id_pesanan,
+                'id_menu' => $request->id_menu,
+                'jumlah' => $request->jumlah,
+                'subtotal' => $subtotal
+            ]);
+
+            // update stok
+            DB::table('data_menu')->where('idmenu', $request->id_menu)->update([
+                'stok' => $stok_menu - $request->jumlah
+            ]);
+
+            // update total pesanan
+            $total_pesanan = DB::table('detail_pesanan')->where('id_pesanan', $id_pesanan)->count();
             DB::table('pesanan')->where('idpesanan', $id_pesanan)->update([
                 'total_pesanan' => $total_pesanan
             ]);
 
             return to_route('order');
-            
         } catch (\Throwable $th) {
-            return back();
+            // Log the error for debugging
+            return back()->with('error', 'Terjadi kesalahan saat memproses pesanan.');
         }
     }
 
@@ -62,13 +80,9 @@ class OrderMenuControlller extends Controller
     public function tambahItemPesanan(Request $request)
     {
         //
-        
-        function simpanPesanan() {
 
-        }
-        function batalPesanan() {
-
-        }
+        function simpanPesanan() {}
+        function batalPesanan() {}
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\limeprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('laporan', function (limeprint $table) {
+        Schema::create('laporan', function (Blueprint $table) {
             $table->id('idlaporan')->primary()->autoIncrement()->nullable(false);
             $table->date('tanggal')->nullable(false)->default(now());
         });

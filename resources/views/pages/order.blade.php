@@ -34,11 +34,11 @@
                     <input name="jumlah" id="food_quantity"
                         class="px-4 py-2 rounded-lg bg-slate-100 outline-none border-none" type="text">
                 </div>
-                <div class="foods-price flex flex-col gap-3 ">
+                {{-- <div class="foods-price flex flex-col gap-3 ">
                     <label for="food_subtotal">Subtotal</label>
                     <input name="subtotal" id="food_subtotal"
                         class="px-4 py-2 rounded-lg bg-slate-100 outline-none border-none" type="text">
-                </div>
+                </div> --}}
             </div>
             <button type="submit" class="bg-lime-500 mt-2 hover:bg-lime-600 text-white py-2 rounded-lg">Add
                 food</button>

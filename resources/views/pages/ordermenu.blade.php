@@ -2,7 +2,7 @@
 
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
-        <h1 class="font-bold text-3xl">Order Menu.</h1>
+        <h1 class="font-bold text-3xl">Order.</h1>
         <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
     </div>
 @endsection
@@ -12,7 +12,7 @@
         <div class="menu-transaction flex justify-between items-center">
             <form action="" class="search flex w-[60%] items-center gap-2">
                 <input type="text" name="search_food_menu" placeholder="Nasi Bakar"
-                    class="bg-slate-50 w-full py-2 pl-5 pr-32 border-2 rounded-lg outline-none ">
+                    class="bg-slate-50 w-[20rem]  py-2 pl-5 pr-32 border-2 rounded-lg outline-none ">
                 <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
             </form>
             <div class="filter flex items-center gap-4">

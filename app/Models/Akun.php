@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Notifiable;
 
-class Akun extends Model
+class Akun extends Model implements AuthenticatableContract
 {
-    use HasFactory, Authenticatable;
+    use Authenticatable;
 
     protected $table = 'akun';
     protected $primaryKey = 'iduser';
-    protected $fillable = ['password'];
+    protected $fillable = ['username','password'];
 }

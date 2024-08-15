@@ -11,7 +11,7 @@ class Pesanan extends Model
 
     protected $table = 'pesanan';
     protected $primaryKey = 'idpesanan';
-    protected $fillable = ['tanggal_pesanan', 'id_menu', 'jumlah', 'subtotal', 'total_pesanan'];
+    protected $fillable = ['tanggal_pesanan', 'id_menu' , 'total_pesanan'];
 
     public function detailPesanan()
     {

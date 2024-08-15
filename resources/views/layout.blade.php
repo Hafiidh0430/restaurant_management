@@ -17,20 +17,20 @@
 <body class="">
     <div class="flex">
         <aside class="fixed z-50 bg-neutral-900 h-screen w-[16.5rem] py-10 px-10 border-r-2">
-            <h3 class="title text-2xl text-white font-bold">Sigmart.</h3>
+            <h3 class="title text-2xl text-white font-bold">Gyatt Rest.</h3>
             <div class="menu flex flex-col  mt-7">
                 <p class="title-main text-sm rounded-full text-neutral-500 font-bold">General.</p>
                 <div class="list-menu mt-4 text-slate-300 font-medium gap-3 flex flex-col">
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('main') }}">Dashboard</a>
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage']) ? 'bg-lime-500 text-white' : '' }}"
-                        href="{{ route('menu') }}">Food Menu</a>
+                        href="{{ route('menu') }}">Menu</a>
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is(['order', 'addorder']) ? 'bg-lime-500 text-white' : '' }}"
-                        href="{{ route('order') }}">Order Menu</a>
+                        href="{{ route('order') }}">Order</a>
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('transaction') ? 'bg-lime-500 text-white' : '' }}"
-                        href="{{route('transaction')}}">Transaction</a>
+                        href="{{ route('transaction') }}">Transaction</a>
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('logs*') ? 'bg-lime-500 text-white' : '' }}"
-                        href="{{route('logs')}}">Logs</a>
+                        href="{{ route('logs') }}">Logs</a>
                 </div>
 
                 <hr class="my-4">
@@ -39,8 +39,12 @@
                         <p class="title-main text-sm rounded-full text-neutral-500 font-bold">Other.</p>
                     </div>
                     <div class="mt-4 text-gray-800 font-medium w-full flex flex-col">
-                        <a class=" text-red-600 px-4 font-bold hover:text-red-600 rounded-md py-2 rounded-4"
-                            href="#">Sign Out</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit"
+                                class=" text-red-600 px-4 font-bold hover:text-red-600 rounded-md py-2 rounded-4">Sign
+                                Out</button>
+                        </form>
                     </div>
                 </div>
             </div>

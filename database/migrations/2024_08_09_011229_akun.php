@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\limeprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('akun', function (limeprint $table) {
-            $table->id('iduser')->nullable(false);
+        Schema::create('akun', function (Blueprint $table) {
+            $table->id('iduser')->primary()->nullable(false);
+            $table->string('username')->nullable(false);
             $table->string('password')->nullable(false);
         });
-
     }
 
     /**

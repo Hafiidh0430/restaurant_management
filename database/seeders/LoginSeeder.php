@@ -18,7 +18,6 @@ class LoginSeeder extends Seeder
     {
         $user = [
             [
-                'iduser' => '1',
                 'username' => 'kasir',
                 'password' => Hash::make(1234)
             ]
