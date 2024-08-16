@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return to_route('/');
+            return to_route('main');
         }
         return to_route('login');
     }
@@ -38,6 +38,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return to_route('logout');
+        return to_route('login');
     }
 }

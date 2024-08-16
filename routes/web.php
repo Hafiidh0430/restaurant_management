@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
+
+// Use a different URI for logout, like /logout
 Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
-Route::post('/login', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 Route::prefix('/')->middleware('auth')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('main')->middleware('auth');

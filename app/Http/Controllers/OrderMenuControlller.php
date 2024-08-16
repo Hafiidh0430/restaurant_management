@@ -37,7 +37,7 @@ class OrderMenuControlller extends Controller
 
             // insialisasi untuk get id_pesanan
             $id_pesanan = DB::table('pesanan')->insertGetId([
-                'total_pesanan' => 0 // Initialize total_pesanan
+                'total_pesanan' => 0 
             ]);
 
             // inisialisasi untuk get harga dan stok
