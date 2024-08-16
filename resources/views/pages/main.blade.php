@@ -103,7 +103,7 @@
                                 </p>
                             </div>
 
-                            <h5 class="price-food font-semibold">Rp. {{ $orders->dataMenu->harga_menu }}</h5>
+                            <h5 class="price-food font-semibold">Rp. {{ $orders->subtotal }}</h5>
                         </div>
 
                         <div class="order-food pt-4 flex gap-4 items-center">
