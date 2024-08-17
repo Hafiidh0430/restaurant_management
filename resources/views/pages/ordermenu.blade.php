@@ -43,10 +43,10 @@
         </div>
     </div>
 
-    <div class="order-foods h-fit max-h-[70dvh] overflow-y-auto mt-6 grid grid-cols-3">
+    <div class="order-foods h-fit max-h-[70dvh] pr-8 overflow-y-auto mt-6 ">
         @forelse ($pesanan as $order)
             <a href="" class="card-for-order card-order p-4  border-2 rounded-xl">
-                <div class="header-order pb-2 border-b-2 flex justify-between items-center">
+                <div class="header-order pb-2 border-b-2 relative flex justify-between items-center">
                     <div class="order-name flex flex-col gap-1">
                         <h3 class="order-code text-lg font-semibold">
                             Order #{{ $order->id_pesanan }}
@@ -55,8 +55,25 @@
                             {{ $order->pesanan->tanggal_pesanan }}
                         </p>
                     </div>
-                    <h5 class="price-food px-4 py-2 text-[.8rem] bg-lime-200  text-lime-600 rounded-full font-semibold">Rp.
-                        {{ $order->subtotal }}</h5>
+                    <div class="sub-heading flex items-center gap-3">
+                        <h5 class="price-food px-4 py-2 text-[.8rem] bg-lime-200  text-lime-600 rounded-full font-semibold">
+                            Rp.
+                            {{ $order->subtotal }}</h5>
+                        <svg class="w-10 option_order_svg flex h-10 p-2 text-dark bg-slate-100 rounded-md hover:bg-slate-200"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                d="M12 6h.01M12 12h.01M12 18h.01" />
+                        </svg>
+                    </div>
+                    <div
+                        class="option_order_menu top-12 right-0 mr-[-2.8rem] mt-[.4rem] absolute shadow-xl text-sm p-2 rounded-lg gap-1 bg-slate-100 flex flex-col ">
+                        <form method="GET" action="{{route('updateOrderPages', ['id' => $order->id_pesanan])}}">
+                            <button class="px-3 text-left w-full py-1 hover:bg-slate-200 rounded-md">Edit</button>
+                        </form>
+                        <button type="button"
+                            class="btn_delete_order_menu px-3 py-1 text-left hover:bg-red-200 text-red-600 rounded-md">Delete</button>
+                    </div>
 
                 </div>
 
@@ -79,14 +96,37 @@
                     </div>
                 </div>
             </a>
+            <div
+                        class="delete-order-modal fixed z-20 text-center justify-center flex bg-slate-100 p-6 rounded-xl flex-col gap-3 items-center">
 
-            {{-- <div class="z-10 mt-10 detail-container-order absolute w-full flex justify-center">
-                <div class="details-order w-[40rem] h-[24rem] flex flex-col bg-slate-400">
-                    <img src="" class="bg-slate-700 w-full h-full" alt="">
-                </div>
-            </div> --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
+                            <g fill="none">
+                                <path stroke="currentColor" stroke-width="1.5"
+                                    d="M5.312 10.762C8.23 5.587 9.689 3 12 3c2.31 0 3.77 2.587 6.688 7.762l.364.644c2.425 4.3 3.638 6.45 2.542 8.022S17.786 21 12.364 21h-.728c-5.422 0-8.134 0-9.23-1.572s.117-3.722 2.542-8.022z" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12 8v5" />
+                                <circle cx="12" cy="16" r="1" fill="currentColor" />
+                            </g>
+                        </svg>
+
+                        <div class="text text-center">
+                            <h3 class="text-xl font-bold">Delete Menu</h3>
+                            <p class="text-lg desc-modal inline-flex flex-col gap-1">You're going to delete the <br><span class="font-bold">""</span>
+                            </p>
+                        </div>
+
+                        <div class="btn-order-options mt-4 flex gap-4 text-md font-semibold">
+                            <button class="px-4 keep-order-modal rounded-lg bg-slate-100">No, Keep it.</button>
+                            <form method="POST" action="">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="px-4 py-2 bg-red-200 rounded-lg text-red-600">Yes,
+                                    Delete!</button>
+                            </form>
+                        </div>
+                    </div>
         @empty
             <h1>Empty Order!</h1>
-        @endforelse 
+        @endforelse
     </div>
 @endsection
+<div class="overlay_order_delete w-dvw z-10 h-dvh opacity-55 absolute bg-neutral-900"> </div>

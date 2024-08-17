@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </header>
-            <section class="foods-contaier max-h-[61dvh]  pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
+            <section class="foods-contaier max-h-[61dvh] pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
                 @forelse ($pesanan as $orders)
                     <div class="card-order p-4  border-2 rounded-xl">
                         <div class="order-name pb-2 border-b-2 flex justify-between items-center ">

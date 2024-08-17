@@ -46,9 +46,9 @@
                 <a href="" class="food-card w-full relative flex p-[1rem] border-2 rounded-xl flex-col gap-4">
                     <div class="img-food relative flex flex-col mr-1 rounded-xl">
 
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center mb-4">
                             <h5 class="food-price rounded-full font-semibold">Menu - #{{ $food->idmenu }}</h5>
-                            <svg class="w-10 option_svg flex h-10 mb-4 p-2 text-dark bg-slate-100 rounded-md hover:bg-slate-200"
+                            <svg class="w-10 option_svg flex h-10 p-2 text-dark bg-slate-100 rounded-md hover:bg-slate-200"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2"

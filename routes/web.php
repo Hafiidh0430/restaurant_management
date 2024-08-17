@@ -16,8 +16,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::prefix('/')->middleware('auth')->group(function () {
-    Route::get('/', [MainController::class, 'index'])->name('main')->middleware('auth');
+Route::prefix('/')->middleware('guest')->group(function () {
+    Route::get('/', [MainController::class, 'index'])->name('main');
     Route::get('/menu', [MenuController::class, 'listMenu'])->name('menu');
     Route::get('/order', [OrderMenuControlller::class, 'index'])->name('order');
     Route::get('/transaction', [TransactionControlller::class, 'index'])->name('transaction');
@@ -31,5 +31,6 @@ Route::prefix('/')->middleware('auth')->group(function () {
 
     Route::get('/addorder', [OrderMenuControlller::class, 'addOrderPages'])->name('orderPage');
     Route::post('/addorder', [OrderMenuControlller::class, 'pesananBaru'])->name('addOrder');
-    Route::get('/updateorder', [OrderMenuControlller::class, 'show'])->name('updateOrder');
+    Route::get('/updateorder/{id}/', [OrderMenuControlller::class, 'updateOrderPages'])->name('updateOrderPages');
+    Route::patch('/updateorder/{id}/', [OrderMenuControlller::class, 'editPesanan'])->name('updateOrderStore');
 });

@@ -32,7 +32,7 @@
 .order-foods {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(4, 4fr);
+    grid-template-columns: repeat(3, 4fr);
 }
 
 .option_menu {
@@ -43,7 +43,15 @@
     display: block;
 }
 
-.delete-modal {
+.option_order_menu {
+    display: none;
+}
+
+.option_order_menu.active_order_option {
+    display: block;
+}
+
+.delete-modal, .delete-order-modal {
     display: none;
     top: 50%;
     left: 58.2%;
@@ -59,9 +67,22 @@
     display: block;
 }
 
+.overlay_order_delete {
+    display: none;
+}
+
+.overlay_order_delete.active {
+    display: block;
+}
+
 .delete-modal.active {
     display: block;
 }
+
+.delete-order-modal.active {
+    display: block;
+}
+
 
 .img-cover-side {
     background: url(/public/assets/images/Blog_VisualTrends2019_darknmoody.jpg);

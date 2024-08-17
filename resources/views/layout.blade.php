@@ -23,13 +23,13 @@
                 <div class="list-menu mt-4 text-slate-300 font-medium gap-3 flex flex-col">
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('main') }}">Dashboard</a>
-                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage']) ? 'bg-lime-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage', 'updateFood']) ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('menu') }}">Menu</a>
-                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is(['order', 'addorder']) ? 'bg-lime-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['order', 'orderPage', 'updateOrderPages']) ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('order') }}">Order</a>
-                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('transaction') ? 'bg-lime-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('transaction') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('transaction') }}">Transaction</a>
-                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->is('logs*') ? 'bg-lime-500 text-white' : '' }}"
+                    <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('logs*') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('logs') }}">Logs</a>
                 </div>
 
