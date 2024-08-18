@@ -17,21 +17,18 @@
 
 @section('dashboard')
     <div class="form-container flex">
-        <form method="POST" action="{{ route('updateOrderStore', ['id' => $update->id_menu || $pesanan->idmenu]) }}"
-            class="flex flex-col gap-2">
+        <form method="POST" action="{{ route('updateOrderStore', ['id' => $update->id_menu]) }}" class="flex flex-col gap-2">
             <!-- <div class="foods-name w-full flex flex-col">
-                                                    <label for="food_name">Upload Photo</label>
-                                                    <input id="food_name" class=" py-2 rounded-l outline-none border-none" type="file">
-                                                </div> -->
+                                                            <label for="food_name">Upload Photo</label>
+                                                            <input id="food_name" class=" py-2 rounded-l outline-none border-none" type="file">
+                                                        </div> -->
             @method('PATCH')
             @csrf
             <div class="foods-name w-full flex flex-col">
                 <label for="food_name">Menu Code</label>
                 <select id="food_code" name="id_menu" class="px-4 py-2 rounded-lg bg-slate-100 outline-none border-none">
-                    <option value="{{ $update->id_menu }}">{{ $update->id_menu }}</option>
-                    @foreach ($pesanan as $item)
-                        <option value="{{ $item->idmenu }}">{{ $item->idmenu }}</option>
-                    @endforeach
+                    <option value="{{ $update->id_menu }}" {{ $update->id_menu == $update->id_menu ? 'selected' : '' }}>
+                        {{ $update->id_menu }}</option>
                 </select>
             </div>
             <div class="option-form-food flex gap-4">

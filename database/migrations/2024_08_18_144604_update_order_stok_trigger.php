@@ -14,15 +14,16 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-            CREATE TRIGGER data_menu_trigger
-            AFTER UPDATE ON data_menu 
-            FOR EACH ROW
-            BEGIN
-                UPDATE detail_pesanan
-                SET subtotal = jumlah * NEW.harga_menu
-                WHERE id_menu = NEW.idmenu;
-            END
-        ');
+        CREATE TRIGGER update_order_stok_trigger
+        AFTER UPDATE ON detail_pesanan
+        FOR EACH ROW
+        BEGIN
+            UPDATE data_menu
+            SET stok = jumlah * NEW.harga_menu
+            WHERE id_menu = NEW.idmenu;
+        END
+    ');
+        
     }
 
     /**
@@ -31,6 +32,5 @@ return new class extends Migration
     public function down(): void
     {
         //
-        DB::unprepared('DROP TRIGGER pesanan_trigger');
     }
 };

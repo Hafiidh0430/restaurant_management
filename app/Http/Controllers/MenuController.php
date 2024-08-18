@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cr;
+use App\Models\DetailPesanan;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,16 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function listMenu()
+    public function listMenu(Request $request)
     {
-        $data_menu = DB::table('data_menu')->get();
-        return view('pages.foodsmenu')->with('menu', $data_menu);
+        $menu = Menu::all();
+        $search = $request->input('search_menu');
+        if ($search) {
+            $menu = Menu::whereRaw("nama_menu LIKE? OR harga_menu LIKE? OR stok LIKE?", ["%{$search}%", "%{$search}%", "%{$search}%"])->get();
+        } else {
+            $menu = Menu::all();
+        }
+        return view('pages.foodsmenu')->with(['menu' => $menu, 'search' => $search]);
     }
 
     public function addMenuPages()
@@ -38,13 +45,10 @@ class MenuController extends Controller
                 'stok' => ['nullable'],
             ]);
 
-            // $imageName = null;
 
-            // if ($request->hasFile('image')) {
-            //     $image = $request->file('image');
-            //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-            //     $image->storeAs('assets', $imageName, 'public');
-            // }
+            if ($request->hasFile('image')) {
+               $request->file('image')->store('public/assets');
+            }
 
             DB::table('data_menu')->insert($data_menu);
             return to_route('menu');

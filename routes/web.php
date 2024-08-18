@@ -32,5 +32,6 @@ Route::prefix('/')->middleware('guest')->group(function () {
     Route::get('/addorder', [OrderMenuControlller::class, 'addOrderPages'])->name('orderPage');
     Route::post('/addorder', [OrderMenuControlller::class, 'pesananBaru'])->name('addOrder');
     Route::get('/updateorder/{id}/', [OrderMenuControlller::class, 'updateOrderPages'])->name('updateOrderPages');
-    Route::patch('/updateorder/{id}/', [OrderMenuControlller::class, 'editPesanan'])->name('updateOrderStore');
+    Route::patch('/updateorder/{id}/', [OrderMenuControlller::class, 'editOrder'])->name('updateOrderStore');
+    Route::delete('/deleteorder/{id}/', [OrderMenuControlller::class, 'deleteOrder'])->name('deleteOrderStore');
 });

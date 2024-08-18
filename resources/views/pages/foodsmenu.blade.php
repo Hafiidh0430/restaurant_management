@@ -11,8 +11,8 @@
     <div class="section-foods mt-2 h-fit max-h-[70dvh] overflow-y-hidden pt-4 pb-6">
         <div class="menu-transaction flex justify-between items-center">
             <form action="" class="search flex w-[60%] items-center gap-2">
-                <input type="text" name="search_food_menu" placeholder="Nasi Bakar"
-                    class="bg-slate-50 w-[20rem]  py-2 pl-5 pr-32 border-2 rounded-lg outline-none ">
+                <input type="text" name="search_menu" value="{{ $search }}" placeholder="Nasi Bakar"
+                    class="bg-slate-50 w-[20rem] py-2 pl-5 pr-32 border-2 rounded-lg outline-none ">
                 <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
             </form>
             <div class="filter flex items-center gap-4">
@@ -86,39 +86,40 @@
                     </div>
                 </a>
 
-                    <div
-                        class="delete-modal fixed z-20 text-center justify-center flex bg-slate-100 p-6 rounded-xl flex-col gap-3 items-center">
+                <div
+                    class="delete-modal fixed z-20 text-center justify-center flex bg-slate-100 p-6 rounded-xl flex-col gap-3 items-center">
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
-                            <g fill="none">
-                                <path stroke="currentColor" stroke-width="1.5"
-                                    d="M5.312 10.762C8.23 5.587 9.689 3 12 3c2.31 0 3.77 2.587 6.688 7.762l.364.644c2.425 4.3 3.638 6.45 2.542 8.022S17.786 21 12.364 21h-.728c-5.422 0-8.134 0-9.23-1.572s.117-3.722 2.542-8.022z" />
-                                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12 8v5" />
-                                <circle cx="12" cy="16" r="1" fill="currentColor" />
-                            </g>
-                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
+                        <g fill="none">
+                            <path stroke="currentColor" stroke-width="1.5"
+                                d="M5.312 10.762C8.23 5.587 9.689 3 12 3c2.31 0 3.77 2.587 6.688 7.762l.364.644c2.425 4.3 3.638 6.45 2.542 8.022S17.786 21 12.364 21h-.728c-5.422 0-8.134 0-9.23-1.572s.117-3.722 2.542-8.022z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12 8v5" />
+                            <circle cx="12" cy="16" r="1" fill="currentColor" />
+                        </g>
+                    </svg>
 
-                        <div class="text text-center">
-                            <h3 class="text-xl font-bold">Delete Menu</h3>
-                            <p class="text-lg desc-modal inline-flex flex-col gap-1">You're going to delete the <br><span class="font-bold">"{{$food->nama_menu}}"</span>
-                            </p>
-                        </div>
-
-                        <div class="btn-options mt-4 flex gap-4 text-md font-semibold">
-                            <button class="px-4 keep-modal rounded-lg bg-slate-100">No, Keep it.</button>
-                            <form method="POST" action="{{ route('deleteFoodStore', ['id' => $food->idmenu]) }}">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="px-4 py-2 bg-red-200 rounded-lg text-red-600">Yes,
-                                    Delete!</button>
-                            </form>
-                        </div>
+                    <div class="text text-center">
+                        <h3 class="text-xl font-bold">Delete Menu</h3>
+                        <p class="text-lg desc-modal inline-flex flex-col gap-1">You're going to delete the <br><span
+                                class="font-bold">"{{ $food->nama_menu }}"</span>
+                        </p>
                     </div>
-               
+
+                    <div class="btn-options mt-4 flex gap-4 text-md font-semibold">
+                        <button class="px-4 keep-modal rounded-lg bg-slate-100">No, Keep it.</button>
+                        <form method="POST" action="{{ route('deleteFoodStore', ['id' => $food->idmenu]) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="px-4 py-2 bg-red-200 rounded-lg text-red-600">Yes,
+                                Delete!</button>
+                        </form>
+                    </div>
+                </div>
+
             @empty
                 <h1>Empty Food</h1>
             @endforelse
         </section>
     </div>
-    @endsection
-    <div class="overlay_delete w-dvw z-10 h-dvh opacity-55 absolute bg-neutral-900"> </div>
+@endsection
+<div class="overlay_delete w-dvw z-10 h-dvh opacity-55 absolute bg-neutral-900"> </div>

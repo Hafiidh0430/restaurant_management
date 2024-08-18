@@ -8,18 +8,41 @@ use App\Models\Pesanan;
 use App\Models\DetailPesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Throw_;
 use Symfony\Component\Console\Input\Input;
+
+use function Laravel\Prompts\error;
 
 class OrderMenuControlller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public $stok_menu = null;
-    public function index()
+    public function index(Request $request)
     {
         $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
-        return view('pages.ordermenu')->with(['pesanan' => $pesanan]);
+        $search = $request->input('search_order');
+        if ($search) {
+            $pesanan = DetailPesanan::whereRaw("id_pesanan LIKE? OR jumlah LIKE? OR subtotal LIKE?", ["%{$search}%", "%{$search}%", "%{$search}%"])->get();
+        } else {
+            $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
+        }
+        // $search = $request->input('search_order');
+        // if ($search) {
+        //     $pesanan = DetailPesanan::whereHas('pesanan', function ($query) use ($search) {
+        //         $query->where('id_pesanan', 'LIKE', "%{$search}%");
+        //     })
+        //     ->whereHas('dataMenu', function ($query) use ($search) {
+        //         $query->where('nama_menu', 'LIKE', "%{$search}%");
+        //         $query->where('harga_menu', 'LIKE', "%{$search}%");
+        //     })
+        //     ->orWhere('jumlah', 'LIKE', "%{$search}%")
+        //     ->get();
+        // } else {
+        //     $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
+        // }
+
+        return view('pages.ordermenu')->with(['pesanan' => $pesanan, 'search' => $search]);
     }
 
     public function addOrderPages()
@@ -31,10 +54,7 @@ class OrderMenuControlller extends Controller
     public function updateOrderPages($id)
     {
         $update_pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->where('id_menu', $id)->first();
-        $pesanan = Menu::with(['detailPesanan'])->get()->filter(function ($menu) use ($update_pesanan) {
-            return $menu->idmenu !== $update_pesanan->id_menu;
-        });
-        return view('pages.updateOrder')->with(['pesanan' => $pesanan, 'update' => $update_pesanan]);
+        return view('pages.updateOrder')->with(['update' => $update_pesanan]);
     }
 
     public function pesananBaru(Request $request)
@@ -54,6 +74,10 @@ class OrderMenuControlller extends Controller
             $stok_menu = DB::table('data_menu')->where('idmenu', $request->id_menu)->first()->stok;
 
             // insert into detail_pesanan
+            if ($request->jumlah > $stok_menu) {
+                return to_route('addorder');
+            };
+
             DB::table('detail_pesanan')->insert([
                 'id_pesanan' => $id_pesanan,
                 'id_menu' => $request->id_menu,
@@ -81,7 +105,7 @@ class OrderMenuControlller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function editPesanan(Request $request, $id)
+    public function editOrder(Request $request, $id)
     {
         //
         $request->validate([
@@ -94,13 +118,22 @@ class OrderMenuControlller extends Controller
             'jumlah' => $request->jumlah,
         ];
 
-         // inisialisasi untuk get stok
-         $stok_menu = DB::table('data_menu')->where('idmenu', $request->id_menu)->first()->stok;
-        
-        if($request->jumlah) {
-            DB::table('data_menu')->where('idmenu', $request->id_menu)->update([
-                'stok' => $stok_menu - $request->jumlah
-            ]);
+        // inisialisasi untuk get stok
+        $stok_menu = DB::table('data_menu')->where('idmenu', $request->id_menu)->first()->stok;
+        $jumlah_old = DetailPesanan::with(['dataMenu'])->where('id_menu', $request->id_menu)->first()->jumlah;
+
+        if ($request->jumlah > $stok_menu) {
+            return back()->withErrors(['jumlah' => 'Jumlah melebihi stok yang tersedia']);
+        } else {
+            if ($request->jumlah < $jumlah_old) {
+                DB::table('data_menu')->where('idmenu', $request->id_menu)->update([
+                    'stok' => $stok_menu + ($jumlah_old - $request->jumlah)
+                ]);
+            } else {
+                DB::table('data_menu')->where('idmenu', $request->id_menu)->update([
+                    'stok' => $stok_menu - $request->jumlah
+                ]);
+            }
         }
 
         if (DB::table('detail_pesanan')->where('id_menu', $id)->update($update_data)) {
@@ -111,9 +144,11 @@ class OrderMenuControlller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function deleteOrder($id)
     {
         //
+        $order = DB::table('pesanan')->where('idpesanan', $id)->delete();
+        if ($order) return to_route('order');
     }
 
     /**
