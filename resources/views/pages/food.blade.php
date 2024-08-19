@@ -3,7 +3,7 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Add Food.</h1>
-        <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
     </div>
 @endsection
 
@@ -32,8 +32,12 @@
                         class="px-4 py-2 rounded-lg bg-slate-100 outline-none border-none" type="number">
                 </div>
             </div>
-            <button type="submit" class="bg-lime-500 mt-2 hover:bg-lime-600 text-white py-2 rounded-lg">Add
-                food</button>
+            <div class="btn-confirm flex flex-col">
+                <button type="submit" class="bg-lime-500 mt-2 hover:bg-lime-600 text-white py-2 rounded-lg">Add
+                </button>
+                <a href="{{ route('menu') }}"
+                    class="border border-lime-500 mt-2 text-center hover:bg-lime-600 hover:text-white text-lime-600 py-2 rounded-lg">Cancel</a>
+            </div>
         </form>
     </div>
 @endsection

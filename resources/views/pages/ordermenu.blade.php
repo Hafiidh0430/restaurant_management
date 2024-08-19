@@ -3,7 +3,7 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Order.</h1>
-        <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
     </div>
 @endsection
 
@@ -78,9 +78,9 @@
                 </div>
 
                 <div class="order-food pt-4 flex gap-4">
-                    <div class="food-img">
+                    <div class="food-img w-[13rem] min-h-[6rem]">
                         <img src="https://www.blibli.com/friends-backend/wp-content/uploads/2023/08/COVER.jpg"
-                            class="w-[13rem] object-cover rounded-lg h-full " alt="">
+                            class="w-full object-cover h-full rounded-lg" alt="">
                     </div>
                     <div class="food-details flex w-full flex-col gap-2">
                         <h3 class="food-name text-lg font-semibold">

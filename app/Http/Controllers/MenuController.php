@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cr;
 use App\Models\DetailPesanan;
 use App\Models\Menu;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,12 +25,34 @@ class MenuController extends Controller
         } else {
             $menu = Menu::all();
         }
-        return view('pages.foodsmenu')->with(['menu' => $menu, 'search' => $search]);
+
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+        return view('pages.foodsmenu')->with(['menu' => $menu, 'search' => $search, 'time' => $time]);
     }
 
     public function addMenuPages()
     {
-        return view('pages.food');
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+
+        return view('pages.food')->with(['time' => $time]);
     }
 
     /**
@@ -73,7 +96,17 @@ class MenuController extends Controller
     public function editMenuPages($id)
     {
         $menu = Menu::find($id);
-        return view('pages.updatefood')->with(['menu' => $menu]);
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+        return view('pages.updatefood')->with(['menu' => $menu, 'time' => $time]);
     }
 
     /**

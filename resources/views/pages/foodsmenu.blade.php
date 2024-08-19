@@ -3,7 +3,7 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Menu.</h1>
-        <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
     </div>
 @endsection
 

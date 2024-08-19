@@ -16,7 +16,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::prefix('/')->middleware('guest')->group(function () {
+Route::prefix('/')->middleware('auth')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('main');
     Route::get('/menu', [MenuController::class, 'listMenu'])->name('menu');
     Route::get('/order', [OrderMenuControlller::class, 'index'])->name('order');

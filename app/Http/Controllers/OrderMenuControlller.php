@@ -6,6 +6,7 @@ use App\Models\cr;
 use App\Models\Menu;
 use App\Models\Pesanan;
 use App\Models\DetailPesanan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Throw_;
@@ -27,6 +28,18 @@ class OrderMenuControlller extends Controller
         } else {
             $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
         }
+
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+        
         // $search = $request->input('search_order');
         // if ($search) {
         //     $pesanan = DetailPesanan::whereHas('pesanan', function ($query) use ($search) {
@@ -42,19 +55,41 @@ class OrderMenuControlller extends Controller
         //     $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
         // }
 
-        return view('pages.ordermenu')->with(['pesanan' => $pesanan, 'search' => $search]);
+        return view('pages.ordermenu')->with(['pesanan' => $pesanan, 'search' => $search, 'time' => $time]);
     }
 
     public function addOrderPages()
     {
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+
         $menu = DB::table('data_menu')->get();
-        return view('pages.order')->with('menu', $menu);
+        return view('pages.order')->with(['menu' => $menu, 'time' => $time]);
     }
 
     public function updateOrderPages($id)
     {
+        //set time by vibes
+        $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
+
+        if($current_time < 12) {
+            $time = "Good Morning";
+        } else if ($current_time >= 12 && $current_time < 17) {
+           $time = "Good Evening";
+        } else {
+            $time = "Good Night";
+        }
+
         $update_pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->where('id_menu', $id)->first();
-        return view('pages.updateOrder')->with(['update' => $update_pesanan]);
+        return view('pages.updateOrder')->with(['update' => $update_pesanan, 'time' => $time]);
     }
 
     public function pesananBaru(Request $request)

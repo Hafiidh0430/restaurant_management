@@ -3,7 +3,7 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Welcome to Dashboard.</h1>
-        <p class="font-extralight text-neutral-400">Heyy Sigma, Good Evening!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
     </div>
     <div class="menu-dashboard flex items-center  justify-center gap-4">
         <form action="" class="search flex items-center gap-2">
@@ -35,7 +35,7 @@
                     </button>
                 </form>
             </header>
-            <section class="foods-cotainer pr-4 h-fit max-h-[61dvh] overflow-y-auto mt-4 grid grid-cols-2 rounded-lg gap-2">
+            <section class="foods-cotainer pr-4 h-fit max-h-[60dvh] overflow-y-auto mt-4 grid grid-cols-2 rounded-lg gap-2">
                 @forelse ($menu as $foods)
                     <div class="food-card w-full flex p-[1rem] border-2 rounded-xl flex-col gap-4">
                         <div class="img-food rounded-xl">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </header>
-            <section class="foods-contaier max-h-[61dvh] pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
+            <section class="foods-contaier max-h-[60dvh] pr-4 overflow-y-auto mt-4 grid grid-cols-1 rounded-lg gap-2">
                 @forelse ($pesanan as $orders)
                     <div class="card-order p-4  border-2 rounded-xl">
                         <div class="order-name pb-2 border-b-2 flex justify-between items-center ">
@@ -107,9 +107,9 @@
                         </div>
 
                         <div class="order-food pt-4 flex gap-4 items-center">
-                            <div class="food-img">
+                            <div class="food-img w-[13rem] h-[5rem]">
                                 <img src="https://www.blibli.com/friends-backend/wp-content/uploads/2023/08/COVER.jpg"
-                                    class="w-[13rem] object-cover rounded-lg " alt="">
+                                    class="w-full h-full object-cover rounded-lg " alt="">
                             </div>
                             <div class="food-details flex w-full flex-col gap-2">
                                 <div class="product-food flex items-center justify-between">
