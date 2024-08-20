@@ -6,6 +6,7 @@ use App\Models\cr;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class AuthController extends Controller
 {
@@ -38,6 +39,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        FacadesSession::flush();
         return to_route('login');
     }
 }

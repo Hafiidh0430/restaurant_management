@@ -20,8 +20,11 @@ Route::prefix('/')->middleware('auth')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('main');
     Route::get('/menu', [MenuController::class, 'listMenu'])->name('menu');
     Route::get('/order', [OrderMenuControlller::class, 'index'])->name('order');
-    Route::get('/transaction', [TransactionControlller::class, 'index'])->name('transaction');
     Route::get('/logs', [LogsController::class, 'index'])->name('logs');
+
+    Route::get('/transaction', [TransactionControlller::class, 'index'])->name('transaction');
+    Route::get('/addtransaction', [TransactionControlller::class, 'addTransactionPage'])->name('addTransaction');
+    Route::post('/addtransaction', [TransactionControlller::class, 'transactionStore'])->name('transactionStore');
 
     Route::get('/addfood', [MenuController::class, 'addMenuPages'])->name('foodPage');
     Route::post('/addfood', [MenuController::class, 'tambahMenu'])->name('addFood');

@@ -19,6 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('total_pesanan')->nullable(false);
             $table->unsignedBigInteger('total_bayar')->nullable(false);
             $table->unsignedBigInteger('kembalian')->nullable(true);
+
+            $table->foreign('id_pesanan')
+                ->references('idpesanan')
+                ->on('pesanan')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

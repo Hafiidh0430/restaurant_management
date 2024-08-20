@@ -32,11 +32,13 @@ class OrderMenuControlller extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-        if($current_time < 12) {
+      if($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Evening";
-        } else {
+           $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Evening";
+        }else {
             $time = "Good Night";
         }
         
@@ -63,11 +65,13 @@ class OrderMenuControlller extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-        if($current_time < 12) {
+      if($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Evening";
-        } else {
+           $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Evening";
+        }else {
             $time = "Good Night";
         }
 
@@ -80,11 +84,13 @@ class OrderMenuControlller extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-        if($current_time < 12) {
+      if($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Evening";
-        } else {
+           $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Evening";
+        }else {
             $time = "Good Night";
         }
 
@@ -125,9 +131,9 @@ class OrderMenuControlller extends Controller
             ]);
 
             // update total pesanan
-            $total_pesanan = DB::table('detail_pesanan')->count();
+            $total_pesanan = DB::table('detail_pesanan')->where('id_pesanan', $id_pesanan)->first();
             DB::table('pesanan')->where('idpesanan', $id_pesanan)->update([
-                'total_pesanan' => $total_pesanan
+                'total_pesanan' => $total_pesanan->jumlah
             ]);
 
             return to_route('order');
