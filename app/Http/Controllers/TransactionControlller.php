@@ -64,7 +64,7 @@ class TransactionControlller extends Controller
             ]);
 
             if($bayar){
-                $order->delete();
+
                 return to_route('transaction');
             };
         } catch (\Throwable $th) {
