@@ -83,6 +83,10 @@ class TransactionControlller extends Controller
             ]);
 
             if($bayar){
+<<<<<<< HEAD
+=======
+
+>>>>>>> aac98c177e4cbbfb415d031f1c35a9de0930d759
                 return to_route('transaction');
                 $order->softDeletes();
             };
