@@ -54,13 +54,13 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Order
+                            Transaksi
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Date
+                            Tanggal
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Action
+                            Laporan
                         </th>
                     </tr>
                 </thead>
@@ -76,7 +76,7 @@
                                 {{ $pembayaran->tanggal_transaksi }}
                             </td>
                             <td class="px-6 py-4">
-                                Silver
+                                <a class="underline" href="">Lihat</a>
                             </td>
                         </tr>
                     @empty

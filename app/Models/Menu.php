@@ -13,7 +13,7 @@ class Menu extends Model
     protected $table = 'data_menu';
     protected $primaryKey = 'idmenu';
     protected $fillable = ['image', 'nama_menu', 'harga_menu', 'stok'];
-
+    public $timestamps = false;
     public function detailPesanan()
     {
         return $this->hasMany(DetailPesanan::class, 'id_menu', 'idmenu');

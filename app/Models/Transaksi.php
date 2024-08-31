@@ -12,7 +12,7 @@ class Transaksi extends Model
     protected $table = 'transaksi';
     protected $primaryKey = 'idtransaksi';
     protected $fillable = ['tanggal_pesanan', 'id_pesanan' , 'total_pesanan', 'total_bayar', 'kembalian'];
-
+    public $timestamps = false;
     public function transaksiPesanan()
     {
         return $this->belongsTo(Pesanan::class, 'id_pesanan', 'idpesanan');

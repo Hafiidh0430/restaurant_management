@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cr;
-use App\Models\DetailPesanan;
 use App\Models\Menu;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use function Laravel\Prompts\error;
 
@@ -29,13 +28,13 @@ class MenuController extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
         return view('pages.foodsmenu')->with(['menu' => $menu, 'search' => $search, 'time' => $time]);
@@ -46,13 +45,13 @@ class MenuController extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
 
@@ -66,15 +65,17 @@ class MenuController extends Controller
     {
         try {
             $data_menu = $request->validate([
-                'image' => ['nullable'],
+                'image' => ['nullable', 'file'],
                 'nama_menu' => ['required'],
                 'harga_menu' => ['required'],
                 'stok' => ['nullable'],
             ]);
 
-
             if ($request->hasFile('image')) {
-               $request->file('image')->store('public/assets');
+                $image = $request->file('image');
+                $filename = $image->getClientOriginalName();
+                $image->move(public_path('assets/img'), $filename);
+                $data_menu['image'] = $filename;
             }
 
             DB::table('data_menu')->insert($data_menu);
@@ -103,13 +104,13 @@ class MenuController extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
         return view('pages.updatefood')->with(['menu' => $menu, 'time' => $time]);
@@ -134,6 +135,13 @@ class MenuController extends Controller
             'harga_menu' => $request->harga_menu,
             'stok' => $request->stok
         ];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('assets/img'), $filename);
+            $data_menu['image'] = $filename;
+        }
 
         if (DB::table('data_menu')->where('idmenu', $id)->update($update_data) || DB::table('data_menu')->where('idmenu', $id)->first()) {
             return to_route('menu');

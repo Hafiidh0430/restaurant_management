@@ -21,41 +21,42 @@ class OrderMenuControlller extends Controller
      */
     public function index(Request $request)
     {
-        $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
+        $pesanan = DetailPesanan::with(['dataMenu', 'pesanan']);
         $search = $request->input('search_order');
+        $filter_date = $request->input('filter_order_date');
+
         if ($search) {
             $pesanan = DetailPesanan::whereRaw("id_pesanan LIKE? OR jumlah LIKE? OR subtotal LIKE?", ["%{$search}%", "%{$search}%", "%{$search}%"])->get();
         } else {
             $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
         }
 
+        //filter order by date 
+        // $start_date = Carbon::now()->subDays(7); // 7 days ago
+        // $end_date = Carbon::now();
+
+        // foreach ($pesanan as $value) {
+        //     dd($value->pesanan->tanggal_pesanan);
+        // }
+        // $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])
+        //     ->whereHas('pesanan', function ($query) use ($start_date, $end_date) {
+        //         $query->whereDate('tanggal_pesanan', '>=', $start_date)
+        //             ->whereDate('tanggal_pesanan', '<=', $end_date);
+        //     })
+        //     ->get();
+
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
-        
-        // $search = $request->input('search_order');
-        // if ($search) {
-        //     $pesanan = DetailPesanan::whereHas('pesanan', function ($query) use ($search) {
-        //         $query->where('id_pesanan', 'LIKE', "%{$search}%");
-        //     })
-        //     ->whereHas('dataMenu', function ($query) use ($search) {
-        //         $query->where('nama_menu', 'LIKE', "%{$search}%");
-        //         $query->where('harga_menu', 'LIKE', "%{$search}%");
-        //     })
-        //     ->orWhere('jumlah', 'LIKE', "%{$search}%")
-        //     ->get();
-        // } else {
-        //     $pesanan = DetailPesanan::with(['dataMenu', 'pesanan'])->get();
-        // }
 
         return view('pages.ordermenu')->with(['pesanan' => $pesanan, 'search' => $search, 'time' => $time]);
     }
@@ -65,13 +66,13 @@ class OrderMenuControlller extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
 
@@ -84,13 +85,13 @@ class OrderMenuControlller extends Controller
         //set time by vibes
         $current_time = Carbon::now()->timezone('Asia/Jakarta')->hour;
 
-      if($current_time < 12) {
+        if ($current_time < 12) {
             $time = "Good Morning";
         } else if ($current_time >= 12 && $current_time < 17) {
-           $time = "Good Afternoon";
-        } else if ($current_time >= 17 && $current_time > 20) {
+            $time = "Good Afternoon";
+        } else if ($current_time >= 17 && $current_time < 20) {
             $time = "Good Evening";
-        }else {
+        } else {
             $time = "Good Night";
         }
 
@@ -149,15 +150,10 @@ class OrderMenuControlller extends Controller
     public function editOrder(Request $request, $id)
     {
         //
-        $request->validate([
+        $update_data = $request->validate([
             'id_menu' => ['required'],
             'jumlah' => ['required'],
         ]);
-
-        $update_data = [
-            'id_menu' => $request->id_menu,
-            'jumlah' => $request->jumlah,
-        ];
 
         // inisialisasi untuk get stok
         $stok_menu = DB::table('data_menu')->where('idmenu', $request->id_menu)->first()->stok;
@@ -190,13 +186,5 @@ class OrderMenuControlller extends Controller
         //
         $order = DB::table('pesanan')->where('idpesanan', $id)->delete();
         if ($order) return to_route('order');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy()
-    {
-        //
     }
 }

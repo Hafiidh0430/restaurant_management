@@ -18,9 +18,9 @@
     <div class="flex">
         <aside class="fixed z-50 bg-neutral-900 h-screen w-[16.5rem] py-10 px-10 border-r-2">
             <h3 class="title text-2xl text-white font-bold">Rest.</h3>
-            <div class="menu flex flex-col  mt-7">
+            <div class="menu flex flex-col mt-7">
                 <p class="title-main text-sm rounded-full text-neutral-500 font-bold">General.</p>
-                <div class="list-menu mt-4 text-slate-300 font-medium gap-3 flex flex-col">
+                <div class="list-menu mt-4 text-slate-300 font-medium gap-2 flex flex-col">
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs('main') ? 'bg-lime-500 text-white' : '' }}"
                         href="{{ route('main') }}">Dashboard</a>
                     <a class="hover:bg-lime-200  hover:text-lime-600 px-4 rounded-md py-2 rounded-4 {{ request()->routeIs(['menu', 'foodPage', 'updateFood']) ? 'bg-lime-500 text-white' : '' }}"
@@ -33,7 +33,7 @@
                         href="{{ route('logs') }}">Logs</a>
                 </div>
 
-                <hr class="my-4">
+               <span class="bg-gray-700 my-4 w-full h-[.04rem]"></span>
                 <div class="list-menu mt-2 text-gray-800 font-medium flex flex-col">
                     <div class="list-menu flex">
                         <p class="title-main text-sm rounded-full text-neutral-500 font-bold">Other.</p>

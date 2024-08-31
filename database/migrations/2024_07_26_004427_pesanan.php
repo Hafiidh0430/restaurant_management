@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id('idpesanan')->primary()->nullable(false);
             $table->date('tanggal_pesanan')->nullable(false)->default(now());
             $table->unsignedBigInteger('total_pesanan')->nullable(false)->default(0);
+
         });
     }
 

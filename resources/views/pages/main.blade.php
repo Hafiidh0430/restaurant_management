@@ -3,14 +3,9 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Welcome to Dashboard.</h1>
-        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{ auth()->user()->username }}, {{ $time }}!</p>
     </div>
     <div class="menu-dashboard flex items-center  justify-center gap-4">
-        <form action="" class="search flex items-center gap-2">
-            <input name="search_main" value="{{ $search }}" type="text" name="search_dashboard"
-                placeholder="Bebek fried chicken" class="bg-slate-50 py-2 px-5 w-[20rem] rounded-lg outline-none border-2">
-            <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
-        </form>
         <a href="{{ route('logs') }}"
             class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500 hover:bg-lime-600">Messages
         </a>
@@ -39,16 +34,15 @@
                 @forelse ($menu as $foods)
                     <div class="food-card w-full flex p-[1rem] border-2 rounded-xl flex-col gap-4">
                         <div class="img-food rounded-xl">
-                            <img src="https://asset.kompas.com/crops/MrdYDsxogO0J3wGkWCaGLn2RHVc=/84x60:882x592/750x500/data/photo/2021/11/17/61949959e07d3.jpg"
-                                alt="" class="img w-full object-cover bg-center rounded-lg h-[12rem]" />
+                            <img src="{{ asset('/assets/img/' . $foods->image) }}"  alt=""
+                                class="img w-full object-cover bg-center rounded-lg h-[12rem]" />
                         </div>
 
                         <div class="details-food ">
                             <div class="food-header flex flex-col gap-3">
                                 <div class="food-detail flex items-center justify-between">
                                     <h3 class="food-name text-lg font-semibold w-[60%]">{{ $foods->nama_menu }}</h3>
-                                    <h5
-                                        class="food-price font-bold text-[1rem] rounded-full">
+                                    <h5 class="food-price font-bold text-[1rem] rounded-full">
                                         Rp. {{ $foods->harga_menu }}</h5>
                                 </div>
                                 <h5 class="food-price rounded-full">Stok: {{ $foods->stok }}</h5>
@@ -108,7 +102,7 @@
 
                         <div class="order-food pt-4 flex gap-4 items-center">
                             <div class="food-img w-[13rem] h-[5rem]">
-                                <img src="https://www.blibli.com/friends-backend/wp-content/uploads/2023/08/COVER.jpg"
+                                <img src="{{ asset('/assets/img/' . $orders->dataMenu->image) }}" 
                                     class="w-full h-full object-cover rounded-lg " alt="">
                             </div>
                             <div class="food-details flex w-full flex-col gap-2">

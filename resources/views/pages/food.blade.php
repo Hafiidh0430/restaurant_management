@@ -9,7 +9,7 @@
 
 @section('dashboard')
     <div class="form-container flex">
-        <form action="{{ route('addFood') }}" method="POST" class="flex flex-col gap-2">
+        <form action="{{ route('addFood') }}" method="POST" class="flex flex-col gap-2" enctype="multipart/form-data">
             @csrf
             <div class="foods-name w-full flex flex-col">
                 <label for="food_name">Upload Photo</label>

@@ -3,7 +3,7 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Menu.</h1>
-        <p class="font-extralight text-neutral-400">Heyy {{auth()->user()->username}}, {{$time}}!</p>
+        <p class="font-extralight text-neutral-400">Heyy {{ auth()->user()->username }}, {{ $time }}!</p>
     </div>
 @endsection
 
@@ -16,23 +16,6 @@
                 <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
             </form>
             <div class="filter flex items-center gap-4">
-                <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-lime-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                    type="button">
-                    <svg class="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
-                    </svg>
-                    Last 30 days
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <div class="filter-options">
-                </div>
                 <div class="filter-food">
                     <a href="{{ route('addFood') }}"
                         class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500  hover:bg-lime-600">+ Menu
@@ -56,10 +39,9 @@
                             </svg>
                         </div>
 
-                        <img src="https://i.pinimg.com/736x/99/fb/d0/99fbd015546ba88252b699414e4a3334.jpg" alt=""
+                        
+                        <img src="{{ asset('/assets/img/' . $food->image) }}" alt=""
                             class="img w-full object-cover bg-center rounded-lg h-[12rem]" />
-                        {{-- <img src="{{ asset('public/assets/' . $food->image) }}" alt=""
-                            class="img w-full object-cover bg-center rounded-lg h-[12rem]" /> --}}
                         <div
                             class="option_menu top-12 right-0 mr-[-2.8rem] absolute shadow-xl text-sm p-2 rounded-lg gap-1 bg-slate-100 flex flex-col ">
                             <form method="GET" action="{{ route('updateFood', ['id' => $food->idmenu]) }}">
@@ -74,7 +56,7 @@
                             <div class="food-detail flex items-center justify-between">
                                 <h3 class="food-name text-lg font-bold w-[60%]">{{ $food->nama_menu }}</h3>
                                 <h5
-                                    class="food-price font-bold bg-lime-200 text-[.8rem] px-4 py-3  rounded-full text-lime-600">
+                                    class="food-price font-bold text-[1rem] rounded-full text-dark">
                                     Rp. {{ $food->harga_menu }}</h5>
                             </div>
                             <div class="other flex items-center justify-between">

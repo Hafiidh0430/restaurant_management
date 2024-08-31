@@ -3,13 +3,13 @@
 @section('header')
     <div class="title-dashboard flex flex-col gap-1">
         <h1 class="font-bold text-3xl">Add Transaction.</h1>
-        <p class="font-extralight text-neutral-400">Heyy {{ auth()->user()->username }}, !</p>
+        <p class="font-extralight text-neutral-400">Heyy {{ auth()->user()->username }}, {{ $time }}!</p>
     </div>
 @endsection
 
 @section('dashboard')
     <div class="form-container flex">
-        <form action="{{route('transactionStore')}}" method="POST" class="flex flex-col gap-2">
+        <form action="{{ route('transactionStore') }}" method="POST" class="flex flex-col gap-2">
             {{-- <div class="foods-name w-full flex flex-col">
                 <label for="food_name">Upload Photo</label>
                 <input id="food_name" class=" py-2 rounded-l outline-none border-none" type="file">

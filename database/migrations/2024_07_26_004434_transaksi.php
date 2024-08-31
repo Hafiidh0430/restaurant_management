@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -13,7 +14,7 @@ return new class extends Migration
     {
         //
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->id('idtransaksi')->primary()->autoIncrement()->nullable(false);
+            $table->uuid('idtransaksi', 8)->primary()->nullable(false);
             $table->date('tanggal_transaksi')->nullable(false)->default(now());
             $table->unsignedBigInteger('id_pesanan')->nullable(false)->unique();
             $table->unsignedBigInteger('total_pesanan')->nullable(false);

@@ -16,23 +16,13 @@
                 <button class="px-4 py-2 border-2 rounded-lg" type="submit">Search</button>
             </form>
             <div class="filter flex items-center gap-4">
-                <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-lime-500 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                    type="button">
-                    <svg class="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
-                    </svg>
-                    Last 30 days
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <div class="filter-options">
-                </div>
+                <select class="filter_order_date">
+                    <option selected value="24">24 hours</option>
+                    <option value="3">3 days</option>
+                    <option value="7">7 days</option>
+                    <option value="1">1 month</option>
+                    <option value="3">3 month</option>
+                </select>
                 <div class="filter-food">
                     <a href="{{ route('orderPage') }}"
                         class="px-4 py-2 inline-flex gap-3 text-white rounded-lg bg-lime-500  hover:bg-lime-600">+
@@ -56,7 +46,7 @@
                         </p>
                     </div>
                     <div class="sub-heading flex items-center gap-3">
-                        <h5 class="price-food px-4 py-2 text-[.8rem] bg-lime-200  text-lime-600 rounded-full font-semibold">
+                        <h5 class="price-food text-[1rem] text-dark rounded-full font-semibold">
                             Rp.
                             {{ $order->subtotal }}</h5>
                         <svg class="w-10 option_order_svg flex h-10 p-2 text-dark bg-slate-100 rounded-md hover:bg-slate-200"
@@ -79,7 +69,7 @@
 
                 <div class="order-food pt-4 flex gap-4">
                     <div class="food-img w-[13rem] min-h-[6rem]">
-                        <img src="https://www.blibli.com/friends-backend/wp-content/uploads/2023/08/COVER.jpg"
+                        <img src="{{ asset('/assets/img/' . $order->dataMenu->image) }}" 
                             class="w-full object-cover h-full rounded-lg" alt="">
                     </div>
                     <div class="food-details flex w-full flex-col gap-2">

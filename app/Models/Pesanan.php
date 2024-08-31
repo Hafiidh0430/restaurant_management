@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pesanan extends Model
 {
@@ -12,7 +13,7 @@ class Pesanan extends Model
     protected $table = 'pesanan';
     protected $primaryKey = 'idpesanan';
     protected $fillable = ['tanggal_pesanan', 'id_menu' , 'total_pesanan'];
-
+    public $timestamps = false;
     public function detailPesanan()
     {
         return $this->hasMany(DetailPesanan::class, 'id_pesanan', 'idpesanan');
